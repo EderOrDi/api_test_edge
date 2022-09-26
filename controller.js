@@ -10,11 +10,9 @@ function connectAPI(req, res) {
             console.log('Not connected');
         }
         return res.json()
-    }).then((resp) => {
-        // console.log(resp);
-         })
+    }).then((resp) => {})
 }
-/* */
+/* Get Users */
 async function getUsers(res) {
     let list
     list = await fetch(url).then(res =>{
@@ -22,11 +20,10 @@ async function getUsers(res) {
     })
     res.send(list)
 }
-console.log(getUsers);
+
 /* Create User */
 async function createUser(req, res) {
     let userResponse
-    // console.log(req);
     userResponse = await fetch(url, {
         method: 'POST',
         headers: {
@@ -58,28 +55,15 @@ async function updateUser(req, res) {
         }),    
     })
     .then((response) => response.json())
-    // .then((json) => console.log(json));
-    console.log(userUpdate) 
     res.send(userUpdate) 
-    
 }
 
 let urlLogin = "https://reqres.in/api/register"
-
-function registerSucces() {
-    fetch(urlLogin).then(res =>{
-        return res.json()
-    }).then((resp) => {
-        console.log(resp);
-    })
-
-}
 
 
 module.exports = {
     connectAPI,
     getUsers,
     createUser,
-    updateUser,
-    registerSucces
+    updateUser
 }
